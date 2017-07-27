@@ -118,3 +118,18 @@ function safeHandle($data){
     //返回处理后的数据
     return $data;
 }
+
+/**
+ * 表单控件生成
+ */
+function make_radio($name, $value, $checked){
+    $html = ''; //$html 保存拼接的HTML
+    foreach ($value as $v){
+        if($checked == $v){
+            $html .= "<input type=\"radio\" name=\"$name\" value=\"$v\" checked/>$v";
+        } else {
+            $html .= "<input type=\"radio\" name=\"$name\" value=\"$v\"/>$v";
+        }
+    }
+    return $html;
+}
