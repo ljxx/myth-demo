@@ -14,6 +14,13 @@ function checkUsername($username){
     return true;
 }
 
+function checkUserName002($username){
+    if(!preg_match('/^[a-z]{4,10}$/', $username)){
+        return '用户名格式不符合要求';
+    }
+    return true;
+}
+
 /**
  * 密码格式验证
  * 验证密码（6～16位，只允许英文字母，数字和下划线）
