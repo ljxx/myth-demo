@@ -15,7 +15,7 @@ function checkUsername($username){
 }
 
 function checkUserName002($username){
-    if(!preg_match('/^[a-z]{4,10}$/', $username)){
+    if(!preg_match('/^\w{4,20}$/', $username)){
         return '用户名格式不符合要求';
     }
     return true;

@@ -4,6 +4,9 @@
     <head>
         <meta charset="utf-8">
         <title>登录成功页-会员中心</title>
+        <script>
+            alert(document.cookie);
+        </script>
     </head>
     <body>
         <?php if($isLogin): ?>

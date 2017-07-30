@@ -14,6 +14,11 @@ if(isset($_SESSION['userinfo'])){
  * 退出登录
  */
 if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+    //清除cookie数据
+    setcookie('username','', time()-1);
+    setcookie('password','', time()-1);
+    
+    //清除session数据
     unset($_SESSION['userinfo']); //清除SESSION数据
     //如果SESSION中没有其他数据，则销毁SESSION
     if(empty($_SESSION)){

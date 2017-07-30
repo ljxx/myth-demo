@@ -10,6 +10,7 @@
             <form method="post">
                 用户名：<input type="text" name="username"/><br/>
                 密 码：<input type="password" name="password"/><br/>
+                <input type="checkbox" name="auto_login" value="on">下次自动登录<br/>
                 <input type="submit" value="登录">
                 <input type="reset" value="重新填写"/>
             </form>

@@ -35,9 +35,15 @@ if(mysql_fetch_row($rst)){
 }
 //用户名不存在，可以注册
 //使用MD5增强密码安全性
-$password = md5($password);
+//$password = md5($password);
+
+//生成密码盐
+$salt = md5(uniqid(microtime()));
+//提升密码安全
+$password = md5($salt.md5($password));
+
 //拼接插入数据的SQL语句
-$sql = "insert into `user` (`username`,`password`, `email`) values ('$username', '$password', '$email')";
+$sql = "insert into `user` (`username`,`password`, `salt`, `email`) values ('$username', '$password', '$salt', '$email')";
 echo $sql;
 //执行SQL语句，$rst保存执行结果
 $rst = mysql_query($sql);
