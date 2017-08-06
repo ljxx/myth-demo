@@ -39,9 +39,15 @@ imagefill($img, 0, 0, $bg_color);
 //继续为验证码图片生成多个干扰点
 for($i = 0; $i <= 300; ++$i){
     //随机为画布分配颜色
-    $color = imagecolorallocate($img, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
+//    $color = imagecolorallocate($img, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
     //在$img图像上随机绘制一个点
-    imagesetpixel($img, mt_rand(0, $img_w), mt_rand(0, $img_h), $color);
+//    imagesetpixel($img, mt_rand(0, $img_w), mt_rand(0, $img_h), $color);
+
+    //设置直线颜色
+    $color = imagecolorallocate($img, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
+    //在$img图像上随机画一条直线
+    imageline($img, mt_rand(0, $img_w), mt_rand(0, $img_h), mt_rand(0, $img_w), mt_rand(0, $img_h), $color);
+   
 }
 
 //为验证码边框分配颜色
@@ -50,7 +56,7 @@ $rect_color = imagecolorallocate($img, 0xff, 0xff, 0xff);
 imagerectangle($img, 0, 0, $img_w-1, $img_h-1, $rect_color);
 
 //设定字符串颜色
-$str_color = imagecolorallocate($img, mt_rand(0, 100), mt_rand(0, 100), mt_rand(0, 100));
+$str_color = imagecolorallocate($img, mt_rand(255, 255), mt_rand(255, 255), mt_rand(0, 10));
 //根据设定的字体获取单个字符的宽和高
 $font_w = imagefontwidth($font);
 $font_h = imagefontheight($font);

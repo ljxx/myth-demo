@@ -26,6 +26,8 @@ if(!function_exists('gd_info')){
     echo '支持gd'."<br/>";
 }
 
-echo phpinfo();
+echo date('Y-m-d H:i:s');;
+
+//echo phpinfo();
 
 ?>
