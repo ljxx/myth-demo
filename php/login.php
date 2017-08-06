@@ -6,12 +6,29 @@ require './public_function.php';
 //连接数据库，设置字符集，选择数据库
 dbInit();
 
+//开启session
+session_start();
+
 $error = array(); //保存错误信息
 //当前表单提交时
 if(!empty($_POST)){
     //接收用户登录信息
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
+    //获取用户输入的验证码字符串
+    $code = isset($_POST['captcha']) ? trim($_POST['captcha']) : '';
+    //判断session中是否存在验证码
+    if(empty($_SESSION['captcha_code'])) {
+        $error = '验证码已过期，请重新登录。';
+    }
+    //将字符串转换成小些然后再进行比较
+    if(strtolower($code) != strtolower($_SESSION['captcha_code'])){
+        $error = '验证码输入错误';
+    }
+    //清除Session数据
+    unset($_SESSION['captcha_code']);
+    //跳转到登录页面
+    
     //再入表单验证函数库，验证用户名和密码格式
     require './check_form.php';
    
@@ -63,6 +80,8 @@ if(!empty($_POST)){
         }
         $error[] = '用户名不存在或密码错误。';
     }
+} else {
+    die('没有表单提交，程序退出');
 }
 
 //当cookie中存在登录状态时
