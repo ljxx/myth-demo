@@ -45,7 +45,8 @@ if(!empty($_POST)){
                     $password_cookie = md5($row['password'].md5($ua. $row['salt']));
                     $cookie_expire = time() + 2592000; //保存1个月（60*60*24*30）
                     setcookie('username', $username, $cookie_expire); //保存用户名
-                    setcookie('password', $password_cookie, $cookie_expire); //保存密码
+                    //最后一个参数表示只能http协议访问，禁止javascript访问
+                    setcookie('password', $password_cookie, $cookie_expire, null, null, null, true); //保存密码,
                 }
                 //登录成功，保存用户会话
                 session_start(); //启动Session
