@@ -20,6 +20,28 @@ class upload{
     private $error='';
     
     /**
+     * 构造方法
+     * @param type $params 用来修改成员属性的数组数据
+     */
+    public function __construct($params = array()) {
+        //判断$params中是否有types元素，有则把types元素值赋值给$allow_types属性
+        if(isset($params['types'])) $this->allow_types = $params['types'];
+        //判断$params中是否有size元素，有则把size元素赋值给$max_size属性
+        if(isset($params['size'])) $this->max_size = $params['size'];
+        //判断$params中是否有path元素，有则把path元素值赋值给$upload_path属性
+        if(isset($params['path'])) $this->upload_path = $params['path'];
+        
+         date_default_timezone_set("Asia/Shanghai"); 
+    }
+    
+    /**
+     * 析构方法, 该对象被销毁时，回调用
+     */
+    public function __destruct() {
+        echo '<p>upload对象被销毁的时间为：'. date("H:i:s").'</p>';
+    }
+
+    /**
      * 
      * 上传文件的函数
      * @param type $file 包含文件的5歌信息的数据

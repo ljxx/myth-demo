@@ -9,6 +9,8 @@
 header('content-type:text/html;charset=utf-8');
 //引入功能函数文件
 require './public_function.php';
+//引入tool静态功能类文件
+require '../classfile/utils/tool.class.php';
 
 //初始化数据库
 dbInit();
@@ -39,12 +41,18 @@ if(!empty($_POST)){
     //执行SQL
     if($res = query($sql,$link)){
         //成功时返回到connectmysql.php
-        header('Location: ./connectmysql.php');
+//        header('Location: ./connectmysql.php');
+        
+        //成功时跳转到showList.php
+        tool::alertGo('员工添加成功！', './connectmysql.php');
+        
         //停止脚本
         die;
     } else {
         //执行失败
-        die('员工添加失败！');
+        tool::alertBack('员工添加失败！');
+        
+//        die('员工添加失败！');
     }
 }
 //没有表单提交时，显示员工添加页面
