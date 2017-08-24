@@ -28,6 +28,6 @@ if(!function_exists('gd_info')){
 
 echo date('Y-m-d H:i:s');;
 
-//echo phpinfo();
+echo phpinfo();
 
 ?>

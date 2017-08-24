@@ -66,7 +66,8 @@ class MySQLPDO{
     public function queryy($sql, $batch=false){
         //取出成员属性中的数据并清空
         $data = $batch ? $this->data : array($this->data);
-//                echo 'hello world == ' . var_dump($data);
+//         echo "<p/>".'hello world == ' .$sql."<p/>";
+//                echo "<p/>".'hello world == ' . var_dump($data)."<p/>";
         $this->data = array();
         //通过预处理方式执行SQL
         $stmt = $this->db->prepare($sql);
@@ -80,6 +81,7 @@ class MySQLPDO{
     //保存操作数据（如果使用SQL模版则通过此方法传递数据）
     public function dataa($data) {
         $this->data = $data;
+        
         return $this; //返回对象自身用语连贯操作
     }
     
