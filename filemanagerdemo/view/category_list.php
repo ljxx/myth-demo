@@ -41,7 +41,7 @@
                         <?php echo $v['name']; ?>
                     </td>
                     <td>
-                        <a href="#">删除</a> | 编辑
+                        <a href="?id=<?php echo $v['id']; ?>&a=category_del" onclick="return confirm('确定要删除该文章分类吗？')">删除</a> | 编辑
                     </td>
                 </tr>
                 <?php endforeach; ?>

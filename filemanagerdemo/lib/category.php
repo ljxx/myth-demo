@@ -12,7 +12,7 @@ require './init.php';
 
 //获取操作标识
 $a = isset($_GET['a']) ? $_GET['a'] : '';
-
+//echo '=====id===='.$a."<p/>";
 //添加文章分类
 if($a == 'category_add') {
     //对取得的分类名称进行安全过滤
@@ -46,6 +46,16 @@ if($a == 'category_add') {
     //批量保存
     $sql = "update `cms_category` set `sort`=:sort where `id`=:id";
     $db->dataa($data)->queryy($sql, true);
+} elseif ($a == 'category_del') {
+    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    $sql = "select `id` from `cms_article` where `id`=$id limit 1";
+//    echo '========='.$id."<p/>";
+    if($db->fetchRoww($sql)){
+        $error[] = '该文章分类下有文章，不能删除';
+    } else {
+        $sql = "delete from `cms_category` where `id`=$id";
+        $db->queryy($sql);
+    }
 }
 
 

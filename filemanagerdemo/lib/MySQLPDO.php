@@ -68,6 +68,7 @@ class MySQLPDO{
         $data = $batch ? $this->data : array($this->data);
 //         echo "<p/>".'hello world == ' .$sql."<p/>";
 //                echo "<p/>".'hello world == ' . var_dump($data)."<p/>";
+//        echo "<p/>".'hello world == ' . $sql."<p/>";
         $this->data = array();
         //通过预处理方式执行SQL
         $stmt = $this->db->prepare($sql);
