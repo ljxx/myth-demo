@@ -47,9 +47,9 @@ class Page {
         //拼接"首页"
         $first = '<a href="'.$url.'1">[首页]</a>';
         //拼接"上一页"
-        $prev = ($this->current == 1) ? '[上一页]':'<a href="'.$url.($this->current - 1).'"></a>';
+        $prev = ($this->current == 1) ? '[上一页]':'<a href="'.$url.($this->current - 1).'">[上一页]</a>';
         //拼接"下一页"
-        $next = ($this->current == $this->pagenum) ? '[下一页]' : '<a href="'.$url.($this->current + 1).'"></a>';
+        $next = ($this->current == $this->pagenum) ? '[下一页]' : '<a href="'.$url.($this->current + 1).'">[下一页]</a>';
         //拼接"尾页"
         $last = '<a href="'.$url.$this->pagenum.'">[尾页]</a>';
         //组合最终样式
